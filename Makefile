@@ -8,18 +8,16 @@ SRCS = main.c a5.c
 OBJS = $(SRCS:%.c=%.o)
 
 a5: $(OBJS)
-	$(GCC) $(TESTFLAGS) $(OBJS) -o a5
+	$(GCC) $(TESTFLAGS) $(OBJS) -o a5 -lm
 
 .c.o:
 	$(GCC) $(TESTFLAGS) -c $*.c
 
 testmemory: a5
-	$(VAL) ./a5
+	$(VAL) ./a5 points.tx
 
-testall: test1 test2 test3 test4 test5
-
-test1: a5
-	./a5
+test: a5
+	./a5 points.tx
 
 clean:
 	rm -f a5 *.o *.txt output? *~
